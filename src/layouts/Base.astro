@@ -30,11 +30,11 @@ const { title = 'Johnny Wilson', description = 'Johnny Wilson is a Sr. project m
   </script>
   <script>
     import { initForm } from '../lib/form.js';
-    import { initSearch, initMenu } from '../lib/search.js';
+    import { initSearch } from '../lib/search.js';
     import { searchIndex } from '../lib/render.js';
     import d from '../data.json';
     import { o } from '../lib/opts.js';
-    initForm(); initSearch(searchIndex(d, o)); initMenu();
+    initForm(); initSearch(searchIndex(d, o));
   </script>
 </body>
 </html>
