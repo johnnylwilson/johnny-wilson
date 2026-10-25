@@ -1,0 +1,7 @@
+---
+import Base from "../layouts/Base.astro";
+import d from "../data.json";
+import { o } from "../lib/opts.js";
+import { home } from "../lib/render.js";
+---
+<Base title="Johnny Wilson" k=""><Fragment set:html={home(d, o)} /></Base>

@@ -1,0 +1,7 @@
+---
+import Base from "../layouts/Base.astro";
+import d from "../data.json";
+import { o } from "../lib/opts.js";
+import { about } from "../lib/render.js";
+---
+<Base title="About Me" k="about"><Fragment set:html={about(d, o)} /></Base>

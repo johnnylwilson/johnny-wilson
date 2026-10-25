@@ -1,0 +1,7 @@
+---
+import Base from "../layouts/Base.astro";
+import d from "../data.json";
+import { o } from "../lib/opts.js";
+import { contact } from "../lib/render.js";
+---
+<Base title="Contact Me" k="contact"><Fragment set:html={contact(d, o)} /></Base>

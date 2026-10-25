@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import d from '../data.json';
+import { o } from '../lib/opts.js';
+import { nav, foot } from '../lib/render.js';
+const { title = 'Johnny Wilson', description = 'Johnny Wilson is a Sr. project manager in Orlando, FL specializing in SEO, SEM and website builds.', k = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title><meta name="description" content={description} />
+  <meta property="og:title" content={title} /><meta property="og:description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <script is:inline>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <Fragment set:html={nav(o, k)} />
+  <main class="wrap"><slot /></main>
+  <Fragment set:html={foot(d, o)} />
+  <script is:inline>
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('#theme')) return;
+      var r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      r.dataset.theme = dark ? 'light' : 'dark';
+      try { localStorage.setItem('theme', r.dataset.theme) } catch (e) {}
+    });
+  </script>
+  <script>
+    import { initForm } from '../lib/form.js';
+    import { initSearch } from '../lib/search.js';
+    import { searchIndex } from '../lib/render.js';
+    import d from '../data.json';
+    import { o } from '../lib/opts.js';
+    initForm(); initSearch(searchIndex(d, o));
+  </script>
+</body>
+</html>

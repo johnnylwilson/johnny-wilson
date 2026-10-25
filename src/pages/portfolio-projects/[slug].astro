@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import d from '../../data.json';
+import { o } from '../../lib/opts.js';
+import { project } from '../../lib/render.js';
+export function getStaticPaths() { return Object.keys(d.projects).map((slug) => ({ params: { slug } })); }
+const { slug } = Astro.params;
+---
+<Base title={`${d.projects[slug].title} - Portfolio`} k="portfolio"><Fragment set:html={project(d, o, slug)} /></Base>
