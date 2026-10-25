@@ -51,3 +51,12 @@ export function initSearch(index) {
   }
   typeIn();
 }
+export function initMenu() {
+  const closeAll = (except) => document.querySelectorAll('.dd.open').forEach((d) => { if (d !== except) { d.classList.remove('open'); d.querySelector('.chev').setAttribute('aria-expanded', 'false'); } });
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('.chev'), d = b && b.closest('.dd');
+    closeAll(d);
+    if (b) b.setAttribute('aria-expanded', String(d.classList.toggle('open')));
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(null); });
+}

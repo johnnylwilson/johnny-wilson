@@ -10,6 +10,7 @@ const { title = 'Johnny Wilson', description = 'Johnny Wilson is a Sr. project m
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title><meta name="description" content={description} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="icon" href="/favicon.png" sizes="96x96" type="image/png" /><link rel="alternate icon" href="/favicon.ico" /><link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta property="og:title" content={title} /><meta property="og:description" content={description} />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
@@ -29,11 +30,11 @@ const { title = 'Johnny Wilson', description = 'Johnny Wilson is a Sr. project m
   </script>
   <script>
     import { initForm } from '../lib/form.js';
-    import { initSearch } from '../lib/search.js';
+    import { initSearch, initMenu } from '../lib/search.js';
     import { searchIndex } from '../lib/render.js';
     import d from '../data.json';
     import { o } from '../lib/opts.js';
-    initForm(); initSearch(searchIndex(d, o));
+    initForm(); initSearch(searchIndex(d, o)); initMenu();
   </script>
 </body>
 </html>
