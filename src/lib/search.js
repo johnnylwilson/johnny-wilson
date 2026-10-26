@@ -51,3 +51,16 @@ export function initSearch(index) {
   }
   typeIn();
 }
+export function initMenu() {
+  const set = (open) => {
+    const b = document.getElementById('burger'), p = document.getElementById('mnav');
+    if (!b || !p) return;
+    p.hidden = !open; b.setAttribute('aria-expanded', String(open));
+  };
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('#burger');
+    if (b) return set(b.getAttribute('aria-expanded') !== 'true');
+    if (!e.target.closest('#mnav') || e.target.closest('#mnav a')) set(false);
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+}
